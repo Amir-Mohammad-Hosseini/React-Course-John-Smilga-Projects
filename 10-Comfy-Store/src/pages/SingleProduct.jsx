@@ -2,7 +2,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import { customFetch } from "../utils";
 import { formatPrice } from "../utils/format";
 import { useState } from "react";
-import { generateAmountOptions } from "../utils/utils.jsx";
+import { generateAmountOptions } from "../utils/generateAmount";
 import { useDispatch } from "react-redux";
 import { addItem } from "../store/features/cart/cartSlice";
 
@@ -27,11 +27,11 @@ const SingleProduct = () => {
     price,
     company,
     productColor,
-    amount
+    amount,
   };
 
   const handleAddToCart = () => {
-    dispatch(addItem({product :cartProduct}))
+    dispatch(addItem({ product: cartProduct }));
   };
 
   return (
@@ -114,9 +114,11 @@ const SingleProduct = () => {
 
 export default SingleProduct;
 
-export const loader = async ({ params }) => {
-  const productId = params.id;
-  const response = await customFetch(`/products/${productId}`);
-  const productDetails = response.data.data;
-  return { productDetails };
-};
+export const loader =
+  (queryClient) =>
+  async ({ params }) => {
+    const productId = params.id;
+    const response = await customFetch(`/products/${productId}`);
+    const productDetails = response.data.data;
+    return { productDetails };
+  };

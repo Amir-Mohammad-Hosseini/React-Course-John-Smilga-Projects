@@ -22,7 +22,7 @@ const CheckoutForm = () => {
 export default CheckoutForm;
 
 export const action =
-  (store) =>
+  (store , queryClient) =>
   async ({ request }) => {
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
@@ -59,6 +59,9 @@ export const action =
         error?.response?.data?.error?.message ||
         "There was an error placing your order";
       toast.error(errorMessage);
+      if (error.response.status === 401 || 403) {
+        redirect("/login");
+      }
       return null;
     }
   };

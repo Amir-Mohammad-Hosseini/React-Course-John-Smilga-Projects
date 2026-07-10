@@ -1,7 +1,7 @@
-import React from 'react'
-import { FeaturedProducts, Hero } from '../components'
-import {customFetch} from "./../utils"
-import { useLoaderData } from 'react-router-dom'
+import React from "react";
+import { FeaturedProducts, Hero } from "../components";
+import { customFetch } from "./../utils";
+import { useLoaderData } from "react-router-dom";
 
 const Landing = () => {
   return (
@@ -9,15 +9,17 @@ const Landing = () => {
       <Hero />
       <FeaturedProducts />
     </>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;
 
-const dynamicUrl = "/products?featured=true"
+const dynamicUrl = "/products?featured=true";
 
-export const loader = async ({request}) => {
-  const response = await customFetch(dynamicUrl)
-  const products = response.data.data
-  return {products}
-}
+export const loader =
+  (queryClient) =>
+  async ({ request }) => {
+    const response = await customFetch(dynamicUrl);
+    const products = response.data.data;
+    return { products };
+  };

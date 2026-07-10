@@ -23,12 +23,12 @@ const Checkout = () => {
 
 export default Checkout;
 
-export const loader =(store) => () => {
-  const user = store.getState().userState.user 
+export const loader = (store) => () => {
+  const user = store.getState().userState.user;
 
-  if(!user){
-    toast.warn("You must be logged in to checkout")
-    return redirect("/login")
+  if (!user) {
+    toast.warn("You must be logged in to checkout");
+    return redirect("/login");
   }
-  return null
-}
+  return null;
+};
