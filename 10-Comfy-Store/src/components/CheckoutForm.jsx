@@ -53,13 +53,14 @@ export const action =
       );
       store.dispatch(clearCart());
       toast.success("ordr placed successfully");
+      queryClient.removeQueries(["orders"])
       return redirect("/orders");
     } catch (error) {
       const errorMessage =
         error?.response?.data?.error?.message ||
         "There was an error placing your order";
       toast.error(errorMessage);
-      if (error.response.status === 401 || 403) {
+      if (error?.response?.status === 401 || 403) {
         redirect("/login");
       }
       return null;

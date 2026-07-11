@@ -16,10 +16,16 @@ export default Landing;
 
 const dynamicUrl = "/products?featured=true";
 
+const featuredProductsQuery = {
+  queryKey : ["featuredProducts"] ,
+  queryFn : () => customFetch(dynamicUrl)
+}
+
 export const loader =
   (queryClient) =>
   async ({ request }) => {
-    const response = await customFetch(dynamicUrl);
+    const response = await queryClient.ensureQueryData(featuredProductsQuery)
+    console.log(response)
     const products = response.data.data;
     return { products };
   };

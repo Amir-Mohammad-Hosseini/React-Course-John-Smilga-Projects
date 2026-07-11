@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart } from "./../store/features/cart/cartSlice";
 import { logoutUser } from "./../store/features/user/userSlice";
+import { queryClient } from "../utils/reactQuery";
 const Header = () => {
   const user = useSelector((state) => state.userState.user);
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const Header = () => {
     navigate("/");
     dispatch(clearCart());
     dispatch(logoutUser());
+    queryClient.removeQueries()
   };
   return (
     <header className="bg-neutral py-2 text-neutral-content">
