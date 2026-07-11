@@ -42,7 +42,11 @@ const router = createBrowserRouter([
         errorElement: <ErrorElement />,
         loader: landingLoader(queryClient),
       },
-      { path: "products", element: <Products />, loader: productsLoader(queryClient) },
+      {
+        path: "products",
+        element: <Products />,
+        loader: productsLoader(queryClient),
+      },
       {
         path: "products/:id",
         element: <SingleProduct />,
@@ -54,9 +58,13 @@ const router = createBrowserRouter([
         path: "checkout",
         element: <Checkout />,
         loader: checkoutLoader(store),
-        action: checkoutAction(store , queryClient),
+        action: checkoutAction(store, queryClient),
       },
-      { path: "orders", element: <Orders />, loader: ordersLoader(store , queryClient) },
+      {
+        path: "orders",
+        element: <Orders />,
+        loader: ordersLoader(store, queryClient),
+      },
     ],
   },
   {

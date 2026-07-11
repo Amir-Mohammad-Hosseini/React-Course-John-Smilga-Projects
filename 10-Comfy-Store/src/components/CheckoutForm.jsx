@@ -22,7 +22,7 @@ const CheckoutForm = () => {
 export default CheckoutForm;
 
 export const action =
-  (store , queryClient) =>
+  (store, queryClient) =>
   async ({ request }) => {
     const formData = await request.formData();
     const { name, address } = Object.fromEntries(formData);
@@ -53,7 +53,7 @@ export const action =
       );
       store.dispatch(clearCart());
       toast.success("ordr placed successfully");
-      queryClient.removeQueries(["orders"])
+      queryClient.removeQueries(["orders"]);
       return redirect("/orders");
     } catch (error) {
       const errorMessage =

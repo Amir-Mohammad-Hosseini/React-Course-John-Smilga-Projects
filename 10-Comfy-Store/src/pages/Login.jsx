@@ -6,23 +6,23 @@ import { loginUser } from "./../store/features/user/userSlice";
 import { useDispatch } from "react-redux";
 
 const Login = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const loginAsGuest = async () => {
-try {
-  const response = await customFetch.post("/auth/local" , {
-    identifier : "test@test.com",
-    password : "secret",
-  })
-  dispatch(loginUser(response.data))
-  toast.success("Welcome guest user")
-  navigate("/")
-} catch (error) {
-  console.log(error)
-  toast.error("guest user login error. please try again")
-}
-  }
+    try {
+      const response = await customFetch.post("/auth/local", {
+        identifier: "test@test.com",
+        password: "secret",
+      });
+      dispatch(loginUser(response.data));
+      toast.success("Welcome guest user");
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      toast.error("guest user login error. please try again");
+    }
+  };
   return (
     <section className="h-screen grid place-items-center">
       <Form
@@ -30,20 +30,16 @@ try {
         className="card w-96 p-8 bg-base-100 shadow-lg flex flex-col gap-y-4"
       >
         <h4 className="text-center text-3xl font-bold">Login</h4>
-        <FormInput
-          label="email"
-          type="email"
-          name="identifier"
-        />
-        <FormInput
-          label="password"
-          type="password"
-          name="password"
-        />
+        <FormInput label="email" type="email" name="identifier" />
+        <FormInput label="password" type="password" name="password" />
         <div className="mt-4">
           <SubmitBtn text="login" />
         </div>
-        <button type="button" className="btn btn-secondary btn-block" onClick={loginAsGuest} >
+        <button
+          type="button"
+          className="btn btn-secondary btn-block"
+          onClick={loginAsGuest}
+        >
           guest user
         </button>
         <p className="text-center">
@@ -71,9 +67,9 @@ export const action =
     try {
       const response = await customFetch.post("/auth/local", data);
       toast.success("Logged in successfully!");
-      store.dispatch(loginUser(response.data))
+      store.dispatch(loginUser(response.data));
 
-      return redirect("/")
+      return redirect("/");
     } catch (error) {
       const errorMessage =
         error?.response?.data?.error?.message ||

@@ -14,7 +14,7 @@ const getThemeFromLocalStorage = () => {
 
 const getUserFromLocalStorage = () => {
   const user = localStorage.getItem("user");
-  console.log(JSON.parse(user))
+  console.log(JSON.parse(user));
   return user ? JSON.parse(user) : null;
 };
 
@@ -27,7 +27,7 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     loginUser: (state, { payload }) => {
-      const user = { ...payload.user, token :payload.jwt };
+      const user = { ...payload.user, token: payload.jwt };
       state.user = user;
       localStorage.setItem("user", JSON.stringify(user));
     },

@@ -116,19 +116,23 @@ export default SingleProduct;
 
 const singleProductQuery = (productId) => {
   return {
-    queryKey : ["products" , {
-      productId
-    }]
-    ,
-    queryFn : () => customFetch(`/products/${productId}`)
-  }
-}
+    queryKey: [
+      "products",
+      {
+        productId,
+      },
+    ],
+    queryFn: () => customFetch(`/products/${productId}`),
+  };
+};
 
 export const loader =
   (queryClient) =>
   async ({ params }) => {
     const productId = params.id;
-    const response = await queryClient.ensureQueryData(singleProductQuery(productId))
+    const response = await queryClient.ensureQueryData(
+      singleProductQuery(productId),
+    );
     const productDetails = response.data.data;
     return { productDetails };
   };

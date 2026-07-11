@@ -1,5 +1,5 @@
-import ProductsGrid from "./ProductsGrid"
-import SectionTitle from "./SectionTitle"
+import ProductsGrid from "./ProductsGrid";
+import SectionTitle from "./SectionTitle";
 
 const FeaturedProducts = () => {
   return (
@@ -7,7 +7,7 @@ const FeaturedProducts = () => {
       <SectionTitle text="featured products" />
       <ProductsGrid />
     </div>
-  )
-}
+  );
+};
 
-export default FeaturedProducts
+export default FeaturedProducts;

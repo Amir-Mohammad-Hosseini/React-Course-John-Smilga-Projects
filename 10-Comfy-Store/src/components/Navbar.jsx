@@ -6,16 +6,13 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleTheme } from "../store/features/user/userSlice";
 
-
-
-
 const Navbar = () => {
-  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart)
-  const theme = useSelector((state) => state.userState.theme)
-  const dispatch = useDispatch()
-  
+  const numItemsInCart = useSelector((state) => state.cartState.numItemsInCart);
+  const theme = useSelector((state) => state.userState.theme);
+  const dispatch = useDispatch();
+
   const handleChangeTheme = () => {
-    dispatch(toggleTheme())
+    dispatch(toggleTheme());
   };
 
   return (
@@ -57,7 +54,7 @@ const Navbar = () => {
           <label className="swap swap-rotate">
             <input
               type="checkbox"
-              checked={theme ==="dracula"}
+              checked={theme === "dracula"}
               onChange={handleChangeTheme}
             />
             {/* Sun */}

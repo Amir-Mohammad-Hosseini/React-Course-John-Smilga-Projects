@@ -27,7 +27,10 @@ export default Orders;
 
 const ordersQuery = (params, user) => {
   return {
-    queryKey: ["orders", { user : user.username , page: params.page ? parseInt(params.page) : 1 }],
+    queryKey: [
+      "orders",
+      { user: user.username, page: params.page ? parseInt(params.page) : 1 },
+    ],
     queryFn: () =>
       customFetch.get("/orders", {
         params,

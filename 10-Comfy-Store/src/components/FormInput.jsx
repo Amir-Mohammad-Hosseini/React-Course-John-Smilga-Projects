@@ -1,4 +1,4 @@
-const FormInput = ({ label, name, type, defaultValue , size }) => {
+const FormInput = ({ label, name, type, defaultValue, size }) => {
   return (
     <div className="form-control flex flex-col gap-y-1">
       <label htmlFor={name} className="label">

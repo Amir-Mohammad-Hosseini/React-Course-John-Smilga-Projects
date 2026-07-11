@@ -12,7 +12,7 @@ const Header = () => {
     navigate("/");
     dispatch(clearCart());
     dispatch(logoutUser());
-    queryClient.removeQueries()
+    queryClient.removeQueries();
   };
   return (
     <header className="bg-neutral py-2 text-neutral-content">
@@ -20,7 +20,10 @@ const Header = () => {
         {user ? (
           <div className="flex gap-x-2 sm:gap-x-8 items-center">
             <p className="text-xs sm:text-sm">Hello, {user.username}</p>
-            <button className="btn btn-xs btn-outline btn-primary" onClick={handleLogoutUser}>
+            <button
+              className="btn btn-xs btn-outline btn-primary"
+              onClick={handleLogoutUser}
+            >
               logout
             </button>
           </div>

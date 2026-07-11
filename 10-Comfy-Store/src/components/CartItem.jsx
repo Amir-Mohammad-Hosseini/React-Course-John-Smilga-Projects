@@ -18,7 +18,7 @@ const CartItem = ({
   };
 
   const handleChangeItemAmount = (event) => {
-    dispatch(editItem({ cartID, amount : parseInt(event.target.value) }));
+    dispatch(editItem({ cartID, amount: parseInt(event.target.value) }));
   };
   return (
     <article
@@ -65,7 +65,10 @@ const CartItem = ({
           </select>
         </div>
         {/* REMOVE */}
-        <button className="mt-2 link link-primary link-hover text-sm" onClick={handleRemoveItemFromCart}>
+        <button
+          className="mt-2 link link-primary link-hover text-sm"
+          onClick={handleRemoveItemFromCart}
+        >
           remove
         </button>
       </div>

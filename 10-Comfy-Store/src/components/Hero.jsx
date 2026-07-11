@@ -21,7 +21,9 @@ const Hero = () => {
           quidem dignissimos facilis error?
         </p>
         <div className="mt-10">
-            <Link to="/products" className="btn btn-primary">Our Products</Link>
+          <Link to="/products" className="btn btn-primary">
+            Our Products
+          </Link>
         </div>
       </div>
 
