@@ -1,6 +1,10 @@
+import { RouterProvider } from "react-router-dom"
+import { Landing } from "./pages"
+import router from "./routes"
+
 const App = () => {
   return (
-    <h1>Jobster</h1>
+    <RouterProvider router={router} />
   )
 }
 
