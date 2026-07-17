@@ -1,17 +1,15 @@
-import { Form, Link } from "react-router-dom";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import { Logo } from "../components";
-import InputField from "../components/InputField";
 import Button from "../components/Button";
+import InputField from "../components/InputField";
+import { Form, Link } from "react-router-dom";
 
-const Register = () => {
+const Login = () => {
   return (
     <Wrapper className="full-page">
       <Form className="form">
         <Logo />
-        <h3>Register</h3>
-        {/* NAME FIELD */}
-        <InputField name="name" label="name" />
+        <h3>Login</h3>
 
         {/* EMAIL FIELD */}
         <InputField name="email" label="email" type="email" />
@@ -21,13 +19,12 @@ const Register = () => {
 
         {/* SUBMIT BTN */}
         <Button text="submit" />
-      <p>
-        Already a member? {" "}
-        <Link className="member-btn" to="/login">Login</Link>
-      </p>
+        <p>
+          Not a member yet? <Link className="member-btn" to="/register">Register</Link>
+        </p>
       </Form>
     </Wrapper>
   );
 };
 
-export default Register;
+export default Login;
