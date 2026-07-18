@@ -7,7 +7,7 @@ import Button from "../components/Button";
 const Register = () => {
   return (
     <Wrapper className="full-page">
-      <Form className="form">
+      <Form className="form" method="post">
         <Logo />
         <h3>Register</h3>
         {/* NAME FIELD */}
@@ -21,13 +21,24 @@ const Register = () => {
 
         {/* SUBMIT BTN */}
         <Button text="submit" />
-      <p>
-        Already a member? {" "}
-        <Link className="member-btn" to="/login">Login</Link>
-      </p>
+        <p>
+          Already a member?{" "}
+          <Link className="member-btn" to="/login">
+            Login
+          </Link>
+        </p>
       </Form>
     </Wrapper>
   );
 };
 
 export default Register;
+
+export const action =
+  (store) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    console.log(data, store , "Register");
+    return null;
+  };

@@ -7,7 +7,7 @@ import { Form, Link } from "react-router-dom";
 const Login = () => {
   return (
     <Wrapper className="full-page">
-      <Form className="form">
+      <Form className="form" method="post" >
         <Logo />
         <h3>Login</h3>
 
@@ -28,3 +28,12 @@ const Login = () => {
 };
 
 export default Login;
+
+export const action =
+  (store) =>
+  async ({ request }) => {
+    const formData = await request.formData();
+    const data = Object.fromEntries(formData);
+    console.log(data, store , "Login");
+    return null;
+  };
