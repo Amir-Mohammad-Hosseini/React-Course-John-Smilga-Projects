@@ -1,10 +1,14 @@
-import { Form, Link } from "react-router-dom";
+import { Form, Link, redirect, useNavigation } from "react-router-dom";
 import Wrapper from "../assets/wrappers/RegisterPage";
 import { Logo } from "../components";
 import InputField from "../components/InputField";
 import Button from "../components/Button";
+import { customFetch } from "../utils/axios";
+import { toast } from "react-toastify";
 
 const Register = () => {
+  const navigation = useNavigation();
+
   return (
     <Wrapper className="full-page">
       <Form className="form" method="post">
@@ -20,7 +24,10 @@ const Register = () => {
         <InputField name="password" label="password" type="password" />
 
         {/* SUBMIT BTN */}
-        <Button text="submit" />
+        <Button
+          text={navigation.state === "submitting" ? "submitting..." : "submit"}
+          disabled={navigation.state === "submitting"}
+        />
         <p>
           Already a member?{" "}
           <Link className="member-btn" to="/login">
@@ -34,11 +41,20 @@ const Register = () => {
 
 export default Register;
 
-export const action =
-  (store) =>
-  async ({ request }) => {
+export const action = async ({ request }) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
-    console.log(data, store , "Register");
+    try {
+      const response = await customFetch.post("/auth/register", data);
+      console.log(response)
+      toast.success("Account created successfully!");
+      return redirect("/login");
+    } catch (error) {
+      const errorMessage =
+        error?.response?.data?.error?.message ||
+        error?.response?.data?.msg ||
+        "Please double check your credentials";
+      toast.error(errorMessage);
+    }
     return null;
   };
