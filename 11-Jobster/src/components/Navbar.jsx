@@ -67,7 +67,7 @@ const Navbar = () => {
         <div className="btn-container" onClick={handleToggleDropdown}>
           <button className="btn" type="button">
             <FaUserCircle />
-            {user?.name}
+            {user?.name || ""}
             <FaCaretDown />
           </button>
           <div
