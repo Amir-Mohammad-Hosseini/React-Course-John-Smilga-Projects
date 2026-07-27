@@ -13,7 +13,11 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    registerUser: (state, { payload }) => {},
+    registerUser: (state, { payload }) => {
+      state.user = payload
+      localStorage.setItem("user", JSON.stringify(payload));
+
+    },
     loginUser: (state, { payload }) => {
       state.user = payload;
       localStorage.setItem("user", JSON.stringify(payload));
@@ -22,9 +26,13 @@ const userSlice = createSlice({
       localStorage.removeItem("user")
       state.user = null;
     },
+    updateUserDatas : (state , {payload}) => {
+      state.user = payload.user
+      localStorage.setItem("user" , JSON.stringify(payload.user))
+    }
   },
 });
 
-export const { loginUser, logoutUser } = userSlice.actions;
+export const { registerUser ,loginUser, logoutUser , updateUserDatas } = userSlice.actions;
 
 export default userSlice.reducer;
