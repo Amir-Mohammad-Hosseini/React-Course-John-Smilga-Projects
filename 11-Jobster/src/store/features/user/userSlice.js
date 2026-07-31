@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
-const getUserFromLocalStorage = () => {
-  const user = localStorage.getItem("user");
-  return user ? JSON.parse(user) : null;
-};
+import { getUserFromLocalStorage } from "../../../utils/localStorage";
 
 const initialState = {
   user: getUserFromLocalStorage(),
