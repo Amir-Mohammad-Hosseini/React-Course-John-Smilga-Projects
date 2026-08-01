@@ -4,14 +4,13 @@ import { useQuery } from "@tanstack/react-query";
 import { jobsQuery } from "../api/jobsQuery";
 import Job from "./Job";
 import Loading from "./Loading";
+import PageBtnContainer from "./PageBtnContainer";
 
 const JobsContainer = () => {
   const [searchParams] = useSearchParams();
 
   const params = Object.fromEntries(searchParams.entries());
-  const { data: jobsData, isPending } = useQuery(
-    jobsQuery({ params }),
-  );
+  const { data: jobsData, isPending } = useQuery(jobsQuery({ params }));
 
   const { jobs, numOfPages, totalJobs } = jobsData;
 
@@ -20,12 +19,15 @@ const JobsContainer = () => {
   }
   return (
     <Wrapper>
-      <h5>jobs info</h5>
+      <h5>
+        {totalJobs} job{totalJobs > 1 && "s"} found
+      </h5>
       <div className="jobs">
         {jobs.map((job) => {
           return <Job key={job._id} {...job} />;
         })}
       </div>
+      <PageBtnContainer numOfPages={numOfPages} />
     </Wrapper>
   );
 };

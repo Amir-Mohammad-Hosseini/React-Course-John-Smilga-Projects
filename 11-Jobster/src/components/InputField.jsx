@@ -4,7 +4,13 @@ const InputField = ({ name, label, type = "text", ...props }) => {
       <label htmlFor={name} className="form-label">
         {label}
       </label>
-      <input type={type} name={name} id={name} className="form-input" {...props} />
+      <input
+        type={type}
+        name={name}
+        id={name}
+        className="form-input"
+        {...props}
+      />
     </div>
   );
 };

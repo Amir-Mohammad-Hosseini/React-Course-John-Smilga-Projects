@@ -3,15 +3,21 @@ import { jobsQuery } from "../../api/jobsQuery";
 import { SearchContainer } from "../../components";
 import { JobsContainer } from "../../components";
 import Loading from "../../components/Loading";
+import { useQuery } from "@tanstack/react-query";
+import { useLoaderData } from "react-router-dom";
 
 const AllJobs = () => {
+  const { params } = useLoaderData();
+  const { isLoading } = useQuery(jobsQuery(params));
+
+  if (isLoading) {
+    return <Loading center={true} />;
+  }
 
   return (
     <>
       <SearchContainer />
-      <Suspense fallback={<Loading center={true} />}>
       <JobsContainer />
-      </Suspense>
     </>
   );
 };
@@ -24,8 +30,6 @@ export const loader =
     const url = new URL(request.url);
 
     const searchParams = Object.fromEntries(url.searchParams.entries());
-    await queryClient.ensureQueryData(
-      jobsQuery({ params: searchParams }),
-    );
+    await queryClient.ensureQueryData(jobsQuery({ params: searchParams }));
     return { params: searchParams };
   };

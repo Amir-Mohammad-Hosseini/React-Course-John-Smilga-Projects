@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialFiltersState = {
   search: "",
-  searchStatus: "all",
-  searchType: "all",
+  status: "all",
+  jobType: "all",
   sort: "latest",
   sortOptions: ["latest", "oldest", "a-z", "z-a"],
 };

@@ -7,32 +7,24 @@ const PageBtnContainer = ({ numOfPages }) => {
 
   const pages = Array.from({ length: numOfPages }, (_, index) => index + 1);
   const params = new URLSearchParams(searchParams);
-const currentPage = Number(searchParams.get("page")) || 1;
+  const currentPage = Number(searchParams.get("page")) || 1;
 
+  const handleClickNextPage = () => {
+    params.set("page", Math.min(currentPage + 1, numOfPages));
 
-const handleClickNextPage = () => {
+    setSearchParams(params);
+  };
 
-  params.set(
-    "page",
-    Math.min(currentPage + 1, numOfPages)
-  );
+  const handleClickPrevPage = () => {
+    params.set("page", Math.max(currentPage - 1, 1));
 
-  setSearchParams(params);
-};
+    setSearchParams(params);
+  };
 
-const handleClickPrevPage = () => {
-  params.set(
-    "page",
-    Math.max(currentPage - 1, 1)
-  );
-
-  setSearchParams(params);
-};
-
-const handleClickTargetPage = (pageNumber) => {
-  params.set("page" , pageNumber)
-  setSearchParams(params)
-}
+  const handleClickTargetPage = (pageNumber) => {
+    params.set("page", pageNumber);
+    setSearchParams(params);
+  };
 
   // const handleClickPrevPage = () => {
   //   if (currentPage <= 1) {
@@ -61,7 +53,7 @@ const handleClickTargetPage = (pageNumber) => {
             type="button"
             key={page}
             className={currentPage === page ? "pageBtn active" : "pageBtn"}
-            onClick={() =>handleClickTargetPage(page)}
+            onClick={() => handleClickTargetPage(page)}
           >
             {page}
           </button>

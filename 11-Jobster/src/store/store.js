@@ -8,7 +8,7 @@ const store = configureStore({
     userState: userReducer,
     uiState: uiReducer,
     jobState: jobReducer,
-    allJobsState : allJobsReducer
+    allJobsState: allJobsReducer,
   },
 });
 

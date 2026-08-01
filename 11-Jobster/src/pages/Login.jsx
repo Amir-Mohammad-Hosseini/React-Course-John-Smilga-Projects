@@ -8,8 +8,7 @@ import { toast } from "react-toastify";
 import { loginUser } from "../store/features/user/userSlice";
 
 const Login = () => {
-
-  const navigation = useNavigation()
+  const navigation = useNavigation();
   return (
     <Wrapper className="full-page">
       <Form className="form" method="post">
@@ -23,7 +22,10 @@ const Login = () => {
         <InputField name="password" label="password" type="password" />
 
         {/* SUBMIT BTN */}
-        <Button text={navigation.state === "submitting" ? "submitting..." : "login"} disabled={navigation.state === "submitting"} />
+        <Button
+          text={navigation.state === "submitting" ? "submitting..." : "login"}
+          disabled={navigation.state === "submitting"}
+        />
         <p>
           Not a member yet?{" "}
           <Link className="member-btn" to="/register">
@@ -45,9 +47,9 @@ export const action =
     try {
       const response = await customFetch.post("/auth/login", data);
       const userDatas = response.data.user;
-      store.dispatch(loginUser(userDatas))
+      store.dispatch(loginUser(userDatas));
       toast.success(`Hello There ${userDatas.name}`);
-      return redirect("/")
+      return redirect("/");
     } catch (error) {
       const errorMessage =
         error?.response?.data?.error?.message ||

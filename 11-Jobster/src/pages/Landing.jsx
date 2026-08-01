@@ -22,7 +22,9 @@ const Landing = () => {
             fixie raclette taxidermy craft beer. Brunch bitters synth, VHS
             crucifix heirloom meggings bicycle rights.
           </p>
-          <Link to="/register" className="btn btn-hero">Login/Register</Link>
+          <Link to="/register" className="btn btn-hero">
+            Login/Register
+          </Link>
         </div>
         <img src={mainImg} alt="job hunt" className="img main-img" />
       </div>

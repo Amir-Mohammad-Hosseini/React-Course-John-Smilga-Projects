@@ -4,14 +4,16 @@ import Logo from "./Logo";
 import NavLinks from "./NavLinks";
 
 const BigSidebar = () => {
-  const {isSidebarOpen} = useSelector((state) => state.uiState)
+  const { isSidebarOpen } = useSelector((state) => state.uiState);
 
-  const handleToggleSidebar = () => {
-    
-  }
+  const handleToggleSidebar = () => {};
   return (
     <Wrapper>
-      <div className={isSidebarOpen ?  "sidebar-container show-sidebar" : "sidebar-container"}>
+      <div
+        className={
+          isSidebarOpen ? "sidebar-container show-sidebar" : "sidebar-container"
+        }
+      >
         <div className="content">
           <header>
             <Logo />

@@ -21,7 +21,7 @@ const Error = () => {
     <Wrapper className="full-page">
       <div>
         <img src={notFoundImg} alt="not found" />
-        <h3>Something went wrong...</h3>
+        <h3>{error?.data?.msg || "Something went wrong..."}</h3>
         <Link to="/">Back Home</Link>
       </div>
     </Wrapper>

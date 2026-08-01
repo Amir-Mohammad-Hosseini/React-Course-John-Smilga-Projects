@@ -5,6 +5,7 @@ import InputField from "../components/InputField";
 import Button from "../components/Button";
 import { customFetch } from "../utils/axios";
 import { toast } from "react-toastify";
+import { registerUser } from "../store/features/user/userSlice";
 
 const Register = () => {
   const navigation = useNavigation();
@@ -41,13 +42,16 @@ const Register = () => {
 
 export default Register;
 
-export const action = async ({ request }) => {
+export const action =
+  (store) =>
+  async ({ request }) => {
     const formData = await request.formData();
     const data = Object.fromEntries(formData);
     try {
       const response = await customFetch.post("/auth/register", data);
-      console.log(response)
+
       toast.success("Account created successfully!");
+      store.dispatch(registerUser(response.data.user));
       return redirect("/login");
     } catch (error) {
       const errorMessage =

@@ -10,25 +10,25 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     registerUser: (state, { payload }) => {
-      state.user = payload
+      state.user = payload;
       localStorage.setItem("user", JSON.stringify(payload));
-
     },
     loginUser: (state, { payload }) => {
       state.user = payload;
       localStorage.setItem("user", JSON.stringify(payload));
     },
     logoutUser: (state) => {
-      localStorage.removeItem("user")
+      localStorage.removeItem("user");
       state.user = null;
     },
-    updateUserDatas : (state , {payload}) => {
-      state.user = payload.user
-      localStorage.setItem("user" , JSON.stringify(payload.user))
-    }
+    updateUserDatas: (state, { payload }) => {
+      state.user = payload.user;
+      localStorage.setItem("user", JSON.stringify(payload.user));
+    },
   },
 });
 
-export const { registerUser ,loginUser, logoutUser , updateUserDatas } = userSlice.actions;
+export const { registerUser, loginUser, logoutUser, updateUserDatas } =
+  userSlice.actions;
 
 export default userSlice.reducer;
